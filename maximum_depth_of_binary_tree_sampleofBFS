@@ -1,0 +1,14 @@
+class Solution:
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        
+        ret, level = 0, [root]
+        
+        while root and level:
+            level = [kid for node in level for kid in (node.left, node.right) if kid]
+            ret += 1
+        
+        return ret

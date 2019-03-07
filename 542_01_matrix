@@ -1,0 +1,32 @@
+class Solution(object):
+    def updateMatrix(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        R, C = len(matrix), len(matrix[0])
+        rtn = matrix
+        
+        def bfs(r,c):
+            toCheck = [[r, c]]
+            cnt = -1
+            while toCheck:
+                cnt += 1
+                temp = []
+                for m, n in toCheck:
+                    if matrix[m][n] == 0: 
+                        rtn[r][c] = cnt
+                        return
+                    if m-1>=0 :temp.append([m-1,n])
+                    if n-1>=0 :temp.append([m,n-1])
+                    if m<R-1 :temp.append([m+1,n])
+                    if n<C-1 :temp.append([m,n+1])
+                toCheck = temp
+            
+                 
+        for r in range(R):
+            for c in range(C):
+                bfs(r, c)
+        
+        return rtn
+                

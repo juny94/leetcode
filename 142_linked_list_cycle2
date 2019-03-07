@@ -1,0 +1,24 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+# hash table
+class Solution(object):
+    def detectCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        node_seen = []
+        curr = head
+        count = 0
+        
+        while curr:
+            if curr in node_seen:
+                return curr
+            else:
+                node_seen.append(curr)
+                curr = curr.next
+        return

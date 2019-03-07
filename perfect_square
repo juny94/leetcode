@@ -1,0 +1,27 @@
+class Solution(object):
+
+# BFS
+    def numSquares(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        lst = [i**2 for i in range(1, int(n**0.5)+1)]
+        cnt = 0
+        toCheck = {n}
+        
+        while toCheck:
+            cnt += 1
+            temp = set()
+            for x in toCheck:
+                for y in lst:
+                    if x == y: 
+                        return cnt
+                    if y < x:
+                        temp.add(x-y)
+            toCheck = temp
+            
+        return cnt
+                        
+        
+        
